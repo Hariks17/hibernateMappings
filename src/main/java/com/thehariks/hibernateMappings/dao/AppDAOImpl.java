@@ -1,6 +1,7 @@
 package com.thehariks.hibernateMappings.dao;
 
 import com.thehariks.hibernateMappings.entity.Instructor;
+import com.thehariks.hibernateMappings.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -32,5 +33,13 @@ public class AppDAOImpl implements AppDAO{
         Instructor instructor = entityManager.find(Instructor.class,id);
 
         entityManager.remove(instructor);
+    }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+
+        InstructorDetail instructorDetail = entityManager.find(InstructorDetail.class,id);
+        return  instructorDetail;
+
     }
 }

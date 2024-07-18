@@ -22,8 +22,17 @@ public class HibernateMappingsApplication {
 
 //			findInstructor(appDAO);
 
-		deleteInstructor(appDAO);
+//		deleteInstructor(appDAO);
+
+			findInstructorDetail(appDAO);
 		};
+	}
+
+	private void findInstructorDetail(AppDAO appDAO) {
+
+		InstructorDetail instructorDetail = appDAO.findInstructorDetailById(1);
+
+		System.out.println(instructorDetail.getInstructor());
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {
