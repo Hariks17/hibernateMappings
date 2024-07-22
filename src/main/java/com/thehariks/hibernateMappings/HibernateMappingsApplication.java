@@ -1,6 +1,7 @@
 package com.thehariks.hibernateMappings;
 
 import com.thehariks.hibernateMappings.dao.AppDAO;
+import com.thehariks.hibernateMappings.entity.Course;
 import com.thehariks.hibernateMappings.entity.Instructor;
 import com.thehariks.hibernateMappings.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -24,8 +25,37 @@ public class HibernateMappingsApplication {
 
 //		deleteInstructor(appDAO);
 
-			findInstructorDetail(appDAO);
+//			findInstructorDetail(appDAO);
+
+
+			createConstructorWithCourses(appDAO);
+
 		};
+	}
+
+	private void createConstructorWithCourses(AppDAO appDAO) {
+
+
+		Instructor instructor = new Instructor("Hari","S","hariharan@gmail.com");
+
+		InstructorDetail instructorDetail = new InstructorDetail("Youtube","Cricket");
+
+
+		instructor.setInstructorDetail(instructorDetail);
+
+		Course course1 = new Course("Course 1");
+		Course course2 = new Course("Course 2");
+		Course course3 = new Course("Course 3");
+
+		instructor.add(course1);
+		instructor.add(course2);
+		instructor.add(course3);
+
+		System.out.println("Constructor "+instructor);
+
+
+		appDAO.save(instructor);
+
 	}
 
 	private void findInstructorDetail(AppDAO appDAO) {
